@@ -4,6 +4,7 @@ package quiz1_50
   * Created by john_liu on 2017/10/13.
   */
 object Permutations_46 {
+
   def permute(nums: Array[Int]): List[List[Int]] = {
     val length = nums.length
     def start(n: Int, list: List[List[Int]] = List(Nil)):List[List[Int]] = {
