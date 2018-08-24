@@ -1,6 +1,6 @@
 package quiz1_50
 
-import Context.ListNode
+import Context.scala.ListNode
 
 import scala.annotation.tailrec
 
