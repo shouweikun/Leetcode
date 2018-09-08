@@ -14,10 +14,14 @@ public class RemoveNthNodeFromEndofList_19 {
             pioneer = pioneer.next;
             if (pioneer == null) return null;
         }
+
         while (pioneer.next != null) {
             last = toBeRemoved;
             pioneer = pioneer.next;
             toBeRemoved = toBeRemoved.next;
+        }
+        if(last == null ){
+            return toBeRemoved.next;
         }
         last.next = toBeRemoved.next;
         toBeRemoved.next = null;
