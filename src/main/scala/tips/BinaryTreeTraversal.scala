@@ -57,19 +57,39 @@ object BinaryTreeTraversal {
     else postorderTraversal_r(root.left) ::: postorderTraversal_r(root.right) ::: List(root.value)
   }
 
-//  def postorderTraversal(root: TreeNode): List[Int] = {
-//    lazy val re = new ListBuffer[Int]
-//    lazy val stack = new mutable.Stack[TreeNode]
-//    if (root == null) return null
-//    var curr: TreeNode = root
-//    var last: TreeNode = null
-//    var leftTreeFinished = false
-//    while (curr != null) {
-//      stack.push(curr)
-//      curr = curr.left
-//    }
-//
-//
-//
-//  }
+  def postorderTraversal(root: TreeNode): List[Int] = {
+    lazy val re = new ListBuffer[Int]
+    lazy val stack = new mutable.Stack[TreeNode]
+    if (root != null) {
+
+
+    var curr: TreeNode = null
+    var last: TreeNode = null
+    stack.push(root)
+    while(stack.nonEmpty) {
+      curr = stack.top
+      val rightIsNull = curr.right == null
+      val leftIsNull = curr.left == null
+
+      def consumeCurr = {
+        re += curr.value
+        stack.pop()
+        last = curr
+      }
+
+      (rightIsNull, leftIsNull) match {
+        case (true, true) => consumeCurr
+        case (true, false) => if (last == curr.left) consumeCurr else stack.push(curr.left)
+        case (false, true) => if (last == curr.right) consumeCurr else stack.push(curr.right)
+        case (false, false) => if (last == curr.right) consumeCurr else {
+          stack.push(curr.left)
+          stack.push(curr.right)
+        }
+      }
+    }
+    }
+
+   re.toList
+
+  }
 }
