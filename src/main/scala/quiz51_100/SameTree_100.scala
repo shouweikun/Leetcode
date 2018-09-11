@@ -17,4 +17,5 @@ object SameTree_100 {
 
       currSame && leftSame && rightSame
   }
+
 }
