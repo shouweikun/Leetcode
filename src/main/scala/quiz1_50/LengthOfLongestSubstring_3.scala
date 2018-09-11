@@ -22,7 +22,7 @@ object LengthOfLongestSubstring_3 {
     }
 
     loopCompare()
-    List(0).slice()
+
 
   }
 

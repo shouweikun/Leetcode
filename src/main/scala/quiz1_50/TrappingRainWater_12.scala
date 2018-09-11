@@ -7,12 +7,6 @@ import scala.collection.mutable
   */
 object TrappingRainWater_12 {
   def trap(height: Array[Int]): Int = {
-     val heightStack  = new mutable.Stack[Int]
-     var acc = 0
-    (0 until  height.length) foreach{
-      current => if(!heightStack.isEmpty){
-
-      }
-    }
+    ???
   }
 }

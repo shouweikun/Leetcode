@@ -15,8 +15,9 @@ object UniqueBinarySearchTrees2_95 {
     }
 
     def generateTrees(n:Int):List[TreeNode] = {
-
+    ???
     }
+    ???
   }
 
 
