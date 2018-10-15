@@ -1,5 +1,7 @@
 package quiz1_50
 
+import scala.annotation.tailrec
+
 /**
   * Created by john_liu on 2017/10/13.
   */
@@ -7,7 +9,8 @@ object Permutations_46 {
 
   def permute(nums: Array[Int]): List[List[Int]] = {
     val length = nums.length
-    def start(n: Int, list: List[List[Int]] = List(Nil)):List[List[Int]] = {
+
+    def start(n: Int, list: List[List[Int]] = List(Nil)): List[List[Int]] = {
       list.map {
         thelist =>
           thelist match {
@@ -15,7 +18,7 @@ object Permutations_46 {
             case notempty => func(notempty, n)
           }
 
-      }.fold(List.empty)((a1,a2) =>a1 ++ a2)
+      }.fold(List.empty)((a1, a2) => a1 ++ a2)
     }
 
     def func(list: List[Int], n: Int): List[List[Int]] = {
@@ -23,7 +26,7 @@ object Permutations_46 {
 
       def loop(looplist: List[Int], Increnment: List[Int] = Nil, re: List[List[Int]] = List.empty): List[List[Int]] = {
         looplist match {
-          case Nil => re.+:(list ++ List(n) )
+          case Nil => re.+:(list ++ List(n))
           case head :: tail => {
             val nextIncrement = Increnment ++ List(head)
             val nextLooplist = tail
@@ -34,32 +37,36 @@ object Permutations_46 {
 
 
       }
+
       loop(list)
     }
 
-
-    def theloop(i:Int,re: List[List[Int]] = List(Nil)):List[List[Int]] ={
+    @tailrec
+    def theloop(i: Int, re: List[List[Int]] = List(Nil)): List[List[Int]] = {
 
       i match {
         //case 0              =>theloop(1,start(nums(0)))
-        case i if(i<length) =>theloop(i+1,start(nums(i),re))
-        case length         =>re
+        case i if (i < length) => theloop(i + 1, start(nums(i), re))
+        case length => re
       }
     }
 
-    theloop(0).sortWith{
-      (x1,x2) =>
-        var one =Array.empty[Int]
+    theloop(0).sortWith {
+      (x1, x2) =>
+        var one = Array.empty[Int]
         var minusone = Array.empty[Int]
-        (0 until x1.length).foreach{
-          i =>if(x1(i)<x2(i)){
-            one =one ++ Array(i)
-          }else{
-            if(x1(i)>x2(i))minusone = minusone ++ Array(i)
-          }
+        (0 until x1.length).foreach {
+          i =>
+            if (x1(i) < x2(i)) {
+              one = one ++ Array(i)
+            } else {
+              if (x1(i) > x2(i)) minusone = minusone ++ Array(i)
+            }
         }
-        val flag =if(one.isEmpty){false}else{
-          if(minusone.isEmpty)true else if(one(0)<minusone(0)) true else false
+        val flag = if (one.isEmpty) {
+          false
+        } else {
+          if (minusone.isEmpty) true else if (one(0) < minusone(0)) true else false
         }
 
         flag
