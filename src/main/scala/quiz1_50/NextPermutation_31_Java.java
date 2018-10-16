@@ -9,10 +9,21 @@ public class NextPermutation_31_Java {
         int i = nums.length - 1;
         while (i >= 1 && nums[i] <= nums[i - 1]) i--;
         if (i != 0) {
-            int j = nums.length -
-                    1;
+            int j = nums.length - 1;
             while (j >= i && nums[j] <= nums[i - 1]) j--;
             swap(nums, i - 1, j);
+        }
+        reverse(nums, i, nums.length - 1);
+    }
+
+
+    private void nextPermutation2(int[] nums) {
+        int i = nums.length - 1;
+        while (i >= 1 && nums[i] <= nums[i - 1]) i--;
+        if (i >= 1) {
+            int j = nums.length - 1;
+            while (j >= i && nums[j] <= nums[i - 1]) j--;
+            swap(nums, i, j);
         }
         reverse(nums, i, nums.length - 1);
     }
