@@ -16,7 +16,7 @@ object Permutations2_47 {
             lazy val nextAcc = acc.map {
               y => x :: y
             }
-            lazy val nextSource = 
+//            lazy val nextSource =
         }
 
       }
