@@ -4,6 +4,11 @@ package tips.sort;
  * Created by john_liu on 2018/11/23.
  */
 public class MergeSort {
+    /**
+     * @param arr
+     * @param left
+     * @param right
+     */
     public static void mergeSort(int[] arr, int left, int right) {
         if (left == right) return;
         if (right - left == 1) {
