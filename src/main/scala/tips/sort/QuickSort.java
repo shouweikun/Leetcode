@@ -24,26 +24,26 @@ public class QuickSort {
             if (desc) {
                 if (arr[pivot] >= arr[right]) {
                     swap(arr, left, right);
-                    if(arr[left]<arr[pivot])left = left + 1;
+                    left = left + 1;
                 } else {
-                    swap(arr, left, right);
-                    if (arr[pivot] >= arr[right])right = right - 1;
+                    right = right - 1;
 
                 }
             } else {
                 if (arr[pivot] <= arr[right]) {
                     swap(arr, left, right);
-                    if(arr[left]>arr[pivot])left = left + 1; left = left + 1;
+                    if (arr[left] > arr[pivot]) left = left + 1;
+                    left = left + 1;
                 } else {
                     swap(arr, left, right);
-                    if (arr[pivot] <= arr[right])right = right - 1;
+                    if (arr[pivot] <= arr[right]) right = right - 1;
                 }
             }
         }
         swap(arr, pivot, left);
         pivot = right;
-        quickSort(arr, nextL, pivot-1, desc);
-        quickSort(arr, pivot+1, nextR, desc);
+        quickSort(arr, nextL, pivot - 1, desc);
+        quickSort(arr, pivot + 1, nextR, desc);
 
     }
 
@@ -55,8 +55,8 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] szm = {3, 2, 45, 5352, 1, 6,1343,1};
-        quickSort(szm, 0, szm.length-1, true);
+        int[] szm = {3, 2, 45, 5352, 1, 6, 1343, 1};
+        quickSort(szm, 0, szm.length - 1, true);
         System.out.print("");
 
     }
