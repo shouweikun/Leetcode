@@ -1,65 +1,66 @@
 package quiz301_350;
 
-<<<<<<< HEAD
-import java.util.List;
-
-/**
- * Created by john_liu on 2018/11/28.
- */
-public class TopKFrequentElements_347 {
-//    public List<Integer> topKFrequent(int[] nums, int k) {
-//
-//    }
-=======
 import java.util.*;
+
 
 /**
  * Created by john_liu on 2018/12/4.
  */
 public class TopKFrequentElements_347 {
-    class Pair{
+    class Pair {
         public int value;
         public int fre;
 
-        public Pair(int value,int fre){
+        public Pair(int value, int fre) {
             this.value = value;
             this.fre = fre;
         }
     }
+
     public List<Integer> topKFrequent(int[] nums, int k) {
         if (k <= 0 || nums == null || nums.length == 0) return Collections.emptyList();
         Arrays.sort(nums);
-        List<Pair> list =new LinkedList<>();
+        List<Pair> list = new LinkedList<>();
         ListIterator<Pair> iter;
         int count = 1;
         int last = nums[0];
-        for(int i = 1;i<nums.length;i++){
-            if(last == nums[i]) count ++;
-            else{
-                if(list.isEmpty()) list.add(new Pair(last,count));
+        if (nums.length == 1) list.add(new Pair(last, count));
+        for (int i = 1; i <= nums.length; i++) {
+
+            if (i < nums.length && last == nums[i]) count++;
+            else {
+                if (list.isEmpty()) list.add(new Pair(last, count));
                 else {
                     iter = list.listIterator();
-                    while(iter.hasNext()){
-                        if(iter.next().fre < count){
+                    while (iter.hasNext()) {
+                        if (iter.next().fre < count) {
                             iter.previous();
-                            iter.add(new Pair(last,count));
+                            iter.add(new Pair(last, count));
+                            break;
+                        } else if (!iter.hasNext()) {
+                            list.add(new Pair(last, count));
+                            break;
                         }
+
                     }
-                    if(list.size()>k)list.remove(k);
+                    if (list.size() > k) list.remove(k);
 
                 }
-                count = 0;
+                count = 1;
                 last = nums[i];
             }
         }
-        List<Integer> re =new LinkedList<>();
+
+
+        List<Integer> re = new LinkedList<>();
         iter = list.listIterator();
-        while(iter.hasNext()){
+        while (iter.hasNext()) {
             re.add(iter.next().value);
         }
         return re;
 
     }
+
     public List<Integer> topKMin(int[] nums, int k) {
         if (k <= 0 || nums == null || nums.length == 0) return Collections.emptyList();
         makeHeap(nums);
@@ -103,9 +104,10 @@ public class TopKFrequentElements_347 {
     }
 
     public static void main(String[] args) {
-        int nums[] = {1,3,45,6};
-        new TopKFrequentElements_347().topKFrequent(nums,1);
+        int nums[] = {-1, -1};
+        List<Integer> a = new TopKFrequentElements_347().topKFrequent(nums, 2);
+        a.toString();
     }
 
->>>>>>> ddadf52c6df88f5b9bbdca880082b633b978c130
+
 }
