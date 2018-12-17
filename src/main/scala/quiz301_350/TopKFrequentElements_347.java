@@ -47,7 +47,7 @@ public class TopKFrequentElements_347 {
 
                 }
                 count = 1;
-                last = nums[i];
+                if (i < nums.length) last = nums[i];
             }
         }
 
