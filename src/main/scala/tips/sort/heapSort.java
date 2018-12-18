@@ -31,6 +31,7 @@ public class HeapSort {
             if(temp>arr[i])break;
             arr[start] =arr[i];
             start=i;
+
         }
         arr[start] = temp;
     }
