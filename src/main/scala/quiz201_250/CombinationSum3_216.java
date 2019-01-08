@@ -10,15 +10,17 @@ public class CombinationSum3_216 {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new LinkedList<>();
         List<Integer> temp = new LinkedList<>();
-        backtracking(res,temp,n,0,k);
+        backtracking(res,temp,n,1,k);
         return res;
     }
 
     private void backtracking(List<List<Integer>> res, List<Integer> temp, int target, int start, int n) {
         if (target < start) return;
         if (n == 1) {
+            if(target>9) return;
             temp.add(target);
             res.add(new LinkedList<>(temp));
+            ((LinkedList<Integer>) temp).removeLast();
         } else {
             for (int i = start; i <= 9; i++) {
                 if (target < i) break;
