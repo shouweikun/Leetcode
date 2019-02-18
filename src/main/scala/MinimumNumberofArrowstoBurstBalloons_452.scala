@@ -5,6 +5,8 @@ import scala.annotation.tailrec
   */
 class MinimumNumberofArrowstoBurstBalloons_452 {
   def findMinArrowShots(points: Array[Array[Int]]): Int = {
+
+    List(1).par.map(x=>x)
     if (points.isEmpty) return 0;
     val sort = points.sortBy(x => x(0))
     var count = 1;
