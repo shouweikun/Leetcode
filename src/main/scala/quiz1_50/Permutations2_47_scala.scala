@@ -3,7 +3,7 @@ package quiz1_50
 /**
   * Created by john_liu on 2018/9/12.
   */
-object Permutations2_47 {
+object Permutations2_47_scala {
 //  def permuteUnique(nums: Array[Int]): List[List[Int]] = {
 //    val re: collection.mutable.Set[List[Int]] = collection.mutable.Set.empty
 //    val len = nums.length

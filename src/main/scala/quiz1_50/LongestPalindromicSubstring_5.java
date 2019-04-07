@@ -15,7 +15,7 @@ public class LongestPalindromicSubstring_5 {
         for(int i = 1;i<s.length();i++){
                 int prev = i-1-dp[i-1];
                 if(prev>=0&&chars[prev] ==chars[i])dp[i] = dp[i-1]+2;
-                else if (chars[i-1]==chars[i])dp[i] =2 ;else dp[i] = 1;
+                else if (chars[i-1]==chars[i])dp[i] =2; else dp[i] = 1;
             if(max<dp[i]){
                 max = dp[i];
                 maxIndex = i;
