@@ -23,7 +23,8 @@ public class KSum {
         int len = nums.length;
         List<List<Integer>> res = new ArrayList<>();
         if(k == 2) { //two pointers from left and right
-            int left = start, right = len - 1;
+            int left = start, right =
+                    - 1;
             while(left < right) {
                 int sum = nums[left] + nums[right];
                 if(sum == target) {
