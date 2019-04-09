@@ -6,6 +6,6 @@ package quiz651_700;
 public class LongestContinuousIncreasingSubsequence_674 {
 
     public int findLengthOfLCIS(int[] nums) {
-
+      return 1;
     }
 }

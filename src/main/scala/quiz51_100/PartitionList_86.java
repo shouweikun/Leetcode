@@ -8,51 +8,81 @@ import Context.java.ListNode;
 public class PartitionList_86 {
     public ListNode partition(ListNode head, int x) {
         if (head == null) return null;
-        ListNode less = null;
-        ListNode more = null;
-        ListNode equal = null;
-        ListNode re = null;
-        ListNode curr = head;
-        while (curr != null) {
-            if (curr.val > x) {
-                if (more == null) more = curr;
-                else {
-                    more.next = curr;
-                    more = curr;
-                }
+        ListNode less = new ListNode(-1);
+        ListNode equal = new ListNode(-1);
+        ListNode gt = new ListNode(-1);
+        ListNode lessP = less;
+        ListNode equalP = equal;
+        ListNode gtP = gt;
+        ListNode pre = null;
+        while (head != null) {
+            if (head.val == x) {
+                equalP.next = head;
+                equalP = equalP.next;
             }
-
-            if (curr.val == x) {
-                equal = curr;
+            if (head.val < x) {
+                lessP.next = head;
+                lessP = lessP.next;
             }
-
-            if (curr.val < x) {
-                if (less == null) {
-                    less = curr;
-                    re = curr;
-                } else {
-                    less.next = curr;
-                    less = curr;
-                }
+            if (head.val > x) {
+                gtP.next = head;
+                gtP = gtP.next;
             }
-          curr =   removeThisNode(curr);
+            head = head.next;
         }
-        int num = (less == null?0:100)+(equal == null?0:10)+(more == null?0:1);
-        switch (num){
-            case 111|110 :less.next = equal;equal.next = more; return re;
-            case 101|100: less.next = more;return re;
-            case 011 : equal.next = more;return equal;
-            case 010: return equal;
-            case 001: return more;
-            default:return null;
-        }
+        if (gtP != null) gtP.next = null;
+        if (equalP != null) equalP.next = null;
+        if (lessP != null) lessP.next = null;
 
+        if (less.next != null) head = less.next;
+        else if (equal.next != null) head = equal.next;
+        else head = gt.next;
+
+        if (equal.next != null) equalP.next = gt.next;
+        else equal.next = gt.next;
+
+        if (less.next != null) lessP.next = equal.next;
+        return head;
     }
 
-    public ListNode removeThisNode(ListNode node) {
-       ListNode re = node.next;
-       node.next = null;
-       return re;
+    public ListNode partition2(ListNode head, int x) {
+        if (head == null) return null;
+        ListNode less = new ListNode(-1);
+        ListNode gte = new ListNode(-1);
+        ListNode lessP = less;
+        ListNode gteP = gte;
+        ListNode pre = null;
+        while (head != null) {
+            if (head.val < x) {
+                lessP.next = head;
+                lessP = lessP.next;
+            } else {
+                gteP.next = head;
+                gteP = gteP.next;
+            }
+            head = head.next;
+        }
+        if (gteP != null) gteP.next = null;
+        if (lessP != null) lessP.next = null;
+        head = less.next != null ? less.next : gte.next;
+        if (less.next != null) lessP.next = gte.next;
+        return head;
     }
 
+    public static void main(String[] args) {
+        ListNode l1 = new ListNode(1);
+        ListNode l2 = new ListNode(4);
+        ListNode l3 = new ListNode(3);
+        ListNode l4 = new ListNode(2);
+        ListNode l5 = new ListNode(5);
+        ListNode l6 = new ListNode(2);
+
+        l1.next = l2;
+        l2.next = l3;
+        l3.next = l4;
+        l4.next = l5;
+        l5.next = l6;
+
+        new PartitionList_86().partition(l1, 3);
+    }
 }
