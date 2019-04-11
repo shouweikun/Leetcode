@@ -11,6 +11,8 @@ public class IsSubsequence_392 {
             if (sPoint >= s.length()) return true;
             if (t.charAt(tPoint) == s.charAt(sPoint)) {
                 sPoint++;
+
+                "".equalsIgnoreCase()
             }
         }
         return false;
