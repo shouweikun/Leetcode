@@ -10,6 +10,7 @@ import scala.collection.mutable.ListBuffer
   */
 object BinaryTreeTraversal {
   def preorderTraversal_r(root: TreeNode): List[Int] = {
+
     if (root == null) Nil
     else List(root.value) ::: preorderTraversal_r(root.left) ::: preorderTraversal_r(root.right)
   }
