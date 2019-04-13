@@ -22,7 +22,7 @@ public class next_Permutation_31 {
         }
         if (index == -1) {
             Arrays.sort(nums);
-            re = Arrays.asList(nums);
+            re = null;
             return re;
         }
         int matchIndex = -1;

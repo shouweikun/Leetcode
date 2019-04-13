@@ -12,18 +12,32 @@ public class MaximalSquare_221 {
         int[][] dp = new int[length][width];
         int re = 0;
         for (int i = 0; i < length; i++) {
-            for (int j = 0; j < width; j++) {
-                if (matrix[i][j] == '0') continue;
-                int p1 = i > 0 ? dp[i - 1][j] : Integer.MAX_VALUE;
-                int p2 = j > 0 ? dp[i][j - 1] : Integer.MAX_VALUE;
-                int p3 = (j > 0 && i > 0) ? dp[i - 1][j - 1] : Integer.MAX_VALUE;
-
-                if(re<dp[i][j]) re = dp[i][j];
+            if (matrix[i][0] == '1') {
+                dp[i][0] = 1;
+                re = 1;
             }
         }
-        return re *re ;
+        for (int j = 0; j < width; j++) {
+            if (matrix[0][j] == '1') {
+                dp[0][j] = 1;
+                re = 1;
+            }
+        }
+        for (int i = 1; i < length; i++) {
+            for (int j = 1; j < width; j++) {
+                if (matrix[i][j] == '1') {
+                    dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
+                    re = Math.max(dp[i][j], re);
+                }
+            }
+        }
+        return re * re;
     }
 
+    public static void main(String[] args) {
+        char[][] a = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
+        new MaximalSquare_221().maximalSquare(a);
+    }
 
 
 }
