@@ -9,6 +9,7 @@ import java.util.List;
 public class LongestContinuousIncreasingSubsequence_674 {
 
     public int findLengthOfLCIS(int[] nums) {
+
         if (nums.length <= 1) return nums.length;
         List<Integer> re = new ArrayList<>();
         re.add(nums[0]);
@@ -35,6 +36,7 @@ public class LongestContinuousIncreasingSubsequence_674 {
 
         return low;
     }
+
 
     public static void main(String[] args) {
         int[] arr = {3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12};

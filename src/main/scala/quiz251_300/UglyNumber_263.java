@@ -1,0 +1,26 @@
+package quiz251_300;
+
+/**
+ * Created by john_liu on 2019/4/13.
+ */
+public class UglyNumber_263 {
+
+    public boolean isUgly(int num) {
+        if(num <= 0)return false;
+        if (num == 1) return true;
+        while (num % 2 == 0) {
+            num = num / 2;
+            if (num == 1) return true;
+        }
+        while (num % 3 == 0) {
+            num = num / 3;
+            if (num == 1) return true;
+        }
+        while (num % 5 == 0) {
+            num = num / 5;
+            if (num == 1) return true;
+        }
+
+        return false;
+    }
+}

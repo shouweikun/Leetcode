@@ -2,6 +2,9 @@ package quiz101_150;
 
 import Context.java.TreeNode;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by john_liu on 2018/11/25.
  */
@@ -31,7 +34,30 @@ public class FlattenBinaryTreetoLinkedList_114 {
             while (temp.right != null) temp = temp.right;
             temp.right = right;
         } else node.right = right;
+
     }
+
+
+    public void flatten_2(TreeNode root) {
+        if (root == null) return;
+        List<TreeNode> list = new LinkedList<>();
+        flattenAdd(root, list);
+        TreeNode curr = list.remove(0);
+        curr.left = null;
+        while (!list.isEmpty()) {
+            curr.right = list.remove(0);
+            curr.left = null;
+            curr = curr.right;
+        }
+    }
+
+    private void flattenAdd(TreeNode root, List<TreeNode> list) {
+        if (root == null) return;
+        list.add(root);
+        flattenAdd(root.left, list);
+        flattenAdd(root.right, list);
+    }
+
 
     public static void main(String[] args) {
         TreeNode node3 = new TreeNode(3);
