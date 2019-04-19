@@ -2,31 +2,29 @@ package quiz201_250;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
  * Created by john_liu on 2019/4/20.
+ *
+ * @note 本题的思考
+ * 使用栈来保证最大值的比较
+ * 使用队列来保证最大值的获取
+ * 通过双端队列来完成这一操作
+ * 维护一个滑动窗口
  */
 public class SlidingWindowMaximum_239 {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
-
+        if (nums == null || nums.length == 0) return new int[0];
         Deque<Integer> deque = new LinkedList<>();
-        int length = nums.length - k + 1;
-        int[] re = new int[length];
         int index = 0;
+        int[] re = new int[nums.length - k + 1];
         for (int i = 0; i < nums.length; i++) {
-            if (deque.isEmpty()) deque.add(nums[i]);
-            else {
-                while (!deque.isEmpty() && deque.peekLast() <= nums[i]) {
-                    deque.pollLast();
-                }
-                deque.add(nums[i]);
-            }
-            if (deque.peekFirst() == i - k) deque.pollFirst();
-            re[index++] = deque.peekFirst();
+            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]) deque.pollLast();
+            deque.addLast(i);
+            if (i - k == deque.peekFirst()) deque.pollFirst();
+            if (i - k + 1 >= 0) re[index++] = nums[deque.peekFirst()];
         }
-
         return re;
     }
 }
