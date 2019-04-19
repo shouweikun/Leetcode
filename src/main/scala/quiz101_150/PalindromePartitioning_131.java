@@ -32,10 +32,14 @@ public class PalindromePartitioning_131 {
             for (int i = start; i < s.length(); i++) {
                 if (!dp[start][i]) continue;
                 tmp.add(s.substring(start, i + 1));
-                backTracking(dp, s, res, tmp, start + 1);
+                backTracking(dp, s, res, tmp, i+1);
                 tmp.removeLast();
             }
         }
 
+    }
+
+    public static void main(String[] args) {
+        new PalindromePartitioning_131().partition("aab");
     }
 }

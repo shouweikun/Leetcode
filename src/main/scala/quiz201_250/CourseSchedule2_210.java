@@ -8,6 +8,6 @@ public class CourseSchedule2_210 {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         if (numCourses == 0 || prerequisites == null) return null;
         int[] re = new int[numCourses];
-
+        return null;
     }
 }
