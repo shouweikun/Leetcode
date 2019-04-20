@@ -1,4 +1,4 @@
-package quiz_651_700;
+package quiz651_700;
 
 /**
  * Created by john_liu on 2019/4/13.

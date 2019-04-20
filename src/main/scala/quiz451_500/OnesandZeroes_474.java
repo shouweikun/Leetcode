@@ -1,4 +1,4 @@
-package quiz_451_500;
+package quiz451_500;
 
 /**
  * Created by john_liu on 2019/4/11.
