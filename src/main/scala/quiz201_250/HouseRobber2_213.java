@@ -16,7 +16,7 @@ public class HouseRobber2_213 {
         int prev2 = 0;
         int curr = 0;
         for (int i = start; i <= end; i++) {
-            curr = Math.max(nums[start] + prev2, prev2);
+            curr = Math.max(nums[i] + prev2, prev1);
             prev2 = prev1;
             prev1 = curr;
         }

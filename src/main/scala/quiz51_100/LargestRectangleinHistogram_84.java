@@ -4,6 +4,9 @@ import java.util.Stack;
 
 /**
  * Created by john_liu on 2019/4/18.
+ *
+ *
+ * @note 栈的使用技巧 用栈来维护当前元素最小高度
  */
 public class LargestRectangleinHistogram_84 {
 

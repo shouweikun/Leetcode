@@ -44,7 +44,6 @@ object BinaryTreeInorderTraversal_94 {
     val left = Option(root).flatMap(r => Option(r.left)).flatMap(inorderTraversal_r(_))
     val right = Option(root).flatMap(r => Option(r.right)).flatMap(inorderTraversal_r(_))
 
-
     val a = for {
       h <- parent
       l <- if (left.isDefined) left else Option(Nil)
