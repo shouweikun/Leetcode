@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * Created by john_liu on 2019/4/26.
+ *
+ * @note 这道题在普通的回溯的基础上增加一个set ，用来避免统一等级相同元素重复
  */
 public class IncreasingSubsequences_491 {
     public List<List<Integer>> findSubsequences(int[] nums) {
